@@ -2,6 +2,7 @@ package com.joaoroberto.workshopmongo.config;
 
 
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.TimeZone;
@@ -48,6 +49,9 @@ public class Instantiation implements CommandLineRunner{
 
 		postRepository.save(post1);
 		postRepository.save(post2);
+		
+		maria.getPosts().addAll(Arrays.asList(post1,post2));
+		userRepository.save(maria);
 	}
 	
 	
