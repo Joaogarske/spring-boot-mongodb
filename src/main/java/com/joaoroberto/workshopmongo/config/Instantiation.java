@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import com.joaoroberto.workshopmongo.doman.Post;
 import com.joaoroberto.workshopmongo.doman.User;
 import com.joaoroberto.workshopmongo.dto.AuthorDTO;
+import com.joaoroberto.workshopmongo.dto.CommentDTO;
 import com.joaoroberto.workshopmongo.repository.PostRepository;
 import com.joaoroberto.workshopmongo.repository.UserRepository;
 import com.mongodb.client.model.geojson.Position;
@@ -47,6 +48,11 @@ public class Instantiation implements CommandLineRunner{
 		Post post1 = new Post(null,sdf.parse("21/03/2018"), "Partiu Viagem", "Vou VIajar para sao paulo",new AuthorDTO(maria));
 		Post post2 = new Post(null,sdf.parse("23/03/2018"), "Bom dia", "Acordei Feliz", new AuthorDTO(maria));
 
+		CommentDTO c1 = new CommentDTO("Boa viajem",sdf.parse("21/03/2018"),new AuthorDTO(joao));
+		CommentDTO c2 = new CommentDTO("Aproveite",sdf.parse("21/03/2018"),new AuthorDTO(joao));
+		
+		post1.getComments().addAll(Arrays.asList(c1,c2));
+		
 		postRepository.save(post1);
 		postRepository.save(post2);
 		
